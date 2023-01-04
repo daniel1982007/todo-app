@@ -1,0 +1,73 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.logo h1 {
+  margin: 0;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #323232;
+}
+
+.search_field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.sort_box {
+  position: relative;
+}
+
+.sort_box:hover .sort_header {
+  color: #499557;
+  cursor: pointer;
+}
+
+.sort_header {
+  margin: 0;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  color: #4e4e4e;
+}
+
+.sort {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sort select {
+  border: none;
+  background-color: #4e4e4e;
+  border-radius: 5px;
+  color: #f9fafb;
+  padding: 3px;
+}
+
+.sort select option {
+  border-radius: 5px;
+}
+
+.activity {
+  margin: 0;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  color: #3d82eb;
+  text-decoration: underline;
+}

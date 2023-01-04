@@ -1,0 +1,23 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  color: #499557;
+}
+
+.footer button {
+  outline: none;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  color: #499557;
+  font-family: Roboto;
+  font-size: 14px;
+}
+
+.footer button:hover {
+  cursor: pointer;
+}

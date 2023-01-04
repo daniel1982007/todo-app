@@ -1,0 +1,16 @@
+.actions {
+  position: absolute;
+  right: 0;
+  top: 6.5px;
+  display: flex;
+  gap: 15px;
+}
+
+.actions button {
+  border-style: none;
+  background-color: transparent;
+}
+
+.actions:hover button {
+  cursor: pointer;
+}

@@ -1,24 +1,33 @@
+import { Op } from "sequelize";
 import Todo from "../../../db/models/Todo";
 import getPage from "../../../utils/todos/getPage";
 
 export default async (req, res) => {
-  //find page number and limit
+  //get params from url
   const page = parseInt(req.query.page);
   const limit = parseInt(req.query.limit);
-  // console.log(page, limit);
-  const todos = await Todo.findAll();
-  // console.log(todos);
-  //find todos subarray
+  const text = req.query.q;
+
+  const todos = await Todo.findAll({
+    where: {
+      title: {
+        [Op.substring]: text,
+      },
+    },
+  });
+
+  //find index
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
   const requested_todos = todos.slice(startIndex, endIndex);
-  // console.log(requested_todos);
 
-  //get result with todos
+  //get result object with todos
   const result = {};
   result.todos = requested_todos;
-  //get result with page
+
+  //get result object with page
   const pageObj = getPage(todos, limit, page);
+  // const pageObj = {};
   result.page = pageObj;
 
   res.status(200).json(result);

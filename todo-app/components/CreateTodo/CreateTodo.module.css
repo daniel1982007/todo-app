@@ -1,0 +1,39 @@
+.create_section {
+  margin-block: 5px;
+  /* position: relative; */
+}
+
+.plus {
+  width: 18px;
+  height: 19px;
+  background-image: url("../../public/plus.svg");
+  margin-right: 10px;
+}
+
+.plus:hover {
+  cursor: pointer;
+}
+
+.create_new {
+  display: flex;
+  align-items: center;
+  padding-left: 6.5px;
+}
+
+.create_new p {
+  margin: 0;
+  font-size: 18px;
+  color: #3d82eb;
+  margin: 0;
+}
+
+.create_new p:hover {
+  cursor: pointer;
+}
+
+.create_new_form {
+  display: flex;
+  border-radius: 5px;
+  border: 1px solid #cbcbcb;
+  padding-left: 6.5px;
+}

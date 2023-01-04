@@ -1,0 +1,31 @@
+.button_nav {
+  display: flex;
+  justify-content: space-between;
+  margin-inline: auto;
+  position: absolute;
+  bottom: 50px;
+  left: 0px;
+  right: 0px;
+}
+
+.button_nav button {
+  padding: 10px;
+  /* margin-inline: 10px; */
+  border: none;
+  background-color: transparent;
+  color: #499557;
+  font-family: Roboto;
+  font-size: 14px;
+}
+
+.button_nav button:hover {
+  cursor: pointer;
+}
+
+.button_num {
+  color: #499557;
+}
+
+.button_num button {
+  margin: 0;
+}

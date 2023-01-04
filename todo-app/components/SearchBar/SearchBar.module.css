@@ -1,0 +1,19 @@
+.search_form {
+  flex-basis: 78%;
+  display: flex;
+  height: 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 100px;
+  padding: 4px 30px;
+  outline: none;
+  background-image: url("../../public/search.svg");
+  background-repeat: no-repeat;
+  background-position: 10px center;
+}
+
+.search_form input {
+  flex-basis: 100%;
+  border: none;
+  outline: none;
+  text-indent: 10px;
+}

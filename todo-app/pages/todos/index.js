@@ -1,62 +1,54 @@
-import React from "react";
-import CreateTodo from "../../components/Todos/CreateTodo";
+import { useState, useEffect } from "react";
+import Todo from "../../components/Todo/Todo";
 import getTodos from "../../utils/todos/getTodos";
-import deleteTodo from "../../utils/todos/deleteTodo";
-import completeTodo from "../../utils/todos/completeTodo";
+import styles from "./todos.module.css";
+import Page from "../../components/Page/Page";
+import CreateTodo from "../../components/CreateTodo";
+import { todosContext } from "../../context";
 
 export default function Todos() {
-  const [todos, setTodos] = React.useState([]);
+  const [todos, setTodos] = useState([]);
+  const [page, setPage] = useState({});
+  const [search, setSearch] = useState("");
+  const [sortCategory, setSortCategory] = useState("");
 
-  React.useEffect(() => {
-    getTodos().then((todos) => setTodos(todos));
+  console.log(sortCategory, search);
+
+  useEffect(() => {
+    //if you want to use promise inside a useeffect, you need to wrap them
+    const get_todos = async () => {
+      const result = await getTodos(1);
+      setTodos(result.todos);
+      setPage(result.page);
+    };
+
+    get_todos();
   }, []);
 
-  const handleDelete = async (id) => {
-    await deleteTodo(id);
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
-
-  const handleComplete = async (id) => {
-    const todo = todos.find((todo) => todo.id === id);
-    const response = await completeTodo(id, todo.completed);
-    const updatedTodo = await response.json();
-    setTodos(todos.map((todo) => (todo.id === id ? updatedTodo : todo)));
-  };
+  console.log(page);
+  console.log(todos);
 
   return (
-    <div>
-      <h1>Todos</h1>
-
-      {/* Search bar */}
-      <div>
-        <input type="text" placeholder="Search" />
-      </div>
-
-      {/* Sorting dropdown */}
-      <div>
-        <select>
-          <option value="title">Title</option>
-          <option value="createdAt">Created At (Asc)</option>
-          <option value="-createdAt">Created At (Desc)</option>
-        </select>
-      </div>
-
-      <ul>
-        {todos.map((todo) => (
-          <li
-            key={todo.id}
-            style={{
-              textDecoration: todo.completed ? "line-through" : "none",
-            }}
-          >
-            {todo.title}
-            <button onClick={() => handleComplete(todo.id)}>Complete</button>
-            <button>Favorite</button>
-            <button onClick={() => handleDelete(todo.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-      <CreateTodo />
-    </div>
+    <todosContext.Provider
+      value={{
+        todos,
+        setTodos,
+        page,
+        setPage,
+        search,
+        setSearch,
+        sortCategory,
+        setSortCategory,
+      }}
+    >
+      <Page>
+        <ul className={styles.todo_list}>
+          {todos.map((todo) => (
+            <Todo key={todo.id} todo={todo} />
+          ))}
+        </ul>
+        <CreateTodo />
+      </Page>
+    </todosContext.Provider>
   );
 }

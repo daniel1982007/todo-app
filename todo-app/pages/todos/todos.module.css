@@ -1,0 +1,21 @@
+.todo_list {
+  list-style: none;
+  margin-top: 20px;
+  padding-left: 0;
+  border-radius: 5px;
+}
+
+.todo_list li {
+  position: relative;
+  margin-top: 10px;
+}
+
+/* .todo_list li:hover button {
+  border-style: none;
+  background-color: transparent;
+  outline: none;
+} */
+
+/* .search_field input::placeholder {
+  text-indent: 40px;
+} */
